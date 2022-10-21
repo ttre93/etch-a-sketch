@@ -1,6 +1,7 @@
 body {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .cell {
@@ -12,4 +13,21 @@ body {
     width: 500px;
     height: 500px;
     background-color: bisque;
+}
+
+.black {
+    background-color: black;
+}
+
+#gridContainer {
+    margin-top: 100px;
+}
+
+#buttonContainer {
+    display: flex;
+}
+
+.button {
+    margin: 1em;
+    padding: 0.5em;
 }
