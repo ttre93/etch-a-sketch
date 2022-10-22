@@ -11,6 +11,10 @@ document.getElementById("changeColorBlackButton").onclick = () => (colorMode = "
 document.getElementById("changeColorRainbowButton").onclick = () => (colorMode = "rainbow");
 document.getElementById("changeColorGrayscaleButton").onclick = () => (colorMode = "grayscale");
 
+blackButton = document.getElementById("changeColorBlackButton");
+rainbowButton = document.getElementById("changeColorRainbowButton");
+grayscaleButton = document.getElementById("changeColorGrayscaleButton");
+resetButton = document.getElementById("resetButton");
 
 gridContainer = document.getElementById("gridContainer");
 
@@ -33,7 +37,7 @@ function generateGrid(){
         grid.appendChild(newCell);
     }
 }
-
+// KDYŽ SE PRVNĚ TRIGGERNE MOUSEDOWN, TAK SE TO VYSERE, KDYŽ SE PRVNĚ TRIGGERNE MOUSEOVER - MYŠ JE V POHYBU PŘED KLIKEM, TAK JE TO OK ?????
 function changeColor(e){
     if (e.type === "mouseover" && !mouseDown){
         return;
@@ -59,7 +63,7 @@ function changeToGrayscale(e){
         e.target.style.backgroundColor = "black";
     } else {
         e.target.setAttribute("grayLvl", currentGrayLevel - 1);
-        let shade = parseInt(currentGrayLevel * 50);
+        let shade = parseInt(currentGrayLevel * 40);
         e.target.style.backgroundColor = `rgb(${shade}, ${shade}, ${shade})`;
     }
 }

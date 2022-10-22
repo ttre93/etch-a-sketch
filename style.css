@@ -2,6 +2,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: rgb(99, 99, 99);
 }
 
 .cell {
@@ -12,7 +13,7 @@ body {
     display: grid;
     width: 500px;
     height: 500px;
-    background-color: rgb(194, 130, 53);
+    background-color: white;
 }
 
 .black {
@@ -25,9 +26,38 @@ body {
 
 #buttonContainer {
     display: flex;
+    align-items: center;
 }
 
 .button {
     margin: 1em;
-    padding: 0.5em;
+    padding: 0.75em;
+    border-radius: 1.5em;
+    background-color: white;
+    font-weight: bold;
+}
+
+#changeColorBlackButton{
+    background-color: black;
+    color: white;
+}
+
+#changeColorRainbowButton{
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+    color: black;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+#changeColorGrayscaleButton{
+    background: linear-gradient(to right, rgb(179, 179, 179), rgb(37, 37, 37));
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+#resetButton{
+    border: 2px solid red;
+}
+
+.activeButton {
+    border: 2px solid red;
+    box-shadow: 0 0 3px 3px red;
 }
