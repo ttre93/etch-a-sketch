@@ -4,21 +4,40 @@ let gridSize = GRID_DEFAULT_SIZE;
 let colorMode = "black";
 let mouseDown = false;
 
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
-document.getElementById("resetButton").onclick = resetGrid;
-document.getElementById("changeColorBlackButton").onclick = () => (colorMode = "black");
-document.getElementById("changeColorRainbowButton").onclick = () => (colorMode = "rainbow");
-document.getElementById("changeColorGrayscaleButton").onclick = () => (colorMode = "grayscale");
+//known issues: 
+//sometimes incorrect activation of "mouseDown" and painting
 
 blackButton = document.getElementById("changeColorBlackButton");
 rainbowButton = document.getElementById("changeColorRainbowButton");
 grayscaleButton = document.getElementById("changeColorGrayscaleButton");
 resetButton = document.getElementById("resetButton");
-
 gridContainer = document.getElementById("gridContainer");
 
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+document.getElementById("resetButton").onclick = resetGrid;
+
+blackButton.addEventListener("click", changeColorMode);
+rainbowButton.addEventListener("click", changeColorMode);
+grayscaleButton.addEventListener("click", changeColorMode);
+
 generateGrid();
+
+function changeColorMode(e){
+    if (e.target.id === "changeColorBlackButton"){colorMode = "black"}
+    else if (e.target.id === "changeColorRainbowButton"){colorMode = "rainbow"}
+    else if (e.target.id === "changeColorGrayscaleButton"){colorMode = "grayscale"}
+    changeActiveButton(e);
+}
+
+function changeActiveButton(e){
+    blackButton.classList.remove("activeButton");
+    rainbowButton.classList.remove("activeButton");
+    grayscaleButton.classList.remove("activeButton");
+    if (colorMode === "black"){blackButton.classList.add("activeButton")}
+    else if (colorMode === "rainbow"){rainbowButton.classList.add("activeButton")}
+    else if (colorMode === "grayscale"){grayscaleButton.classList.add("activeButton")}
+}
 
 function generateGrid(){
     grid = document.createElement("div");
@@ -32,12 +51,12 @@ function generateGrid(){
         newCell.setAttribute("id", i);
         newCell.setAttribute("grayLvl", 5);
         newCell.classList.add("cell");
-        newCell.addEventListener("mousedown", changeColor); //change color of the first clicked grid element
+        newCell.addEventListener("mousedown", changeColor);
         newCell.addEventListener("mouseover", changeColor);
         grid.appendChild(newCell);
     }
 }
-// KDYŽ SE PRVNĚ TRIGGERNE MOUSEDOWN, TAK SE TO VYSERE, KDYŽ SE PRVNĚ TRIGGERNE MOUSEOVER - MYŠ JE V POHYBU PŘED KLIKEM, TAK JE TO OK ?????
+
 function changeColor(e){
     if (e.type === "mouseover" && !mouseDown){
         return;
@@ -77,30 +96,3 @@ function resetGrid(){
     removeGrid();
     generateGrid();
 }
-
-/*
-gridContainer.innerHTML = ''
-
-
-
-let tubirimuft = document.getElementById("grid");
-tubirimuft.remove();*/
-
-/*const GRID_DEFAULT_SIZE = 16;
-
-let gridSize = GRID_DEFAULT_SIZE;
-
-gridDiv = document.getElementById("gridContainer");
-
-gridDiv.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-gridDiv.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-
-for (let i = 0; i < gridSize*gridSize; i++){
-    newCell = document.createElement("div");
-    newCell.setAttribute("id", i);
-    newCell.classList.add("cell");
-    newCell.textContent = i;
-    console.log("cell created");
-    gridDiv.appendChild(newCell);
-}
-*/

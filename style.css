@@ -25,12 +25,14 @@ body {
 }
 
 #buttonContainer {
+    margin-top: 20px;
+    width: 500px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .button {
-    margin: 1em;
     padding: 0.75em;
     border-radius: 1.5em;
     background-color: white;
@@ -58,6 +60,5 @@ body {
 }
 
 .activeButton {
-    border: 2px solid red;
-    box-shadow: 0 0 3px 3px red;
+    box-shadow: 0 0 7px 7px red;
 }
