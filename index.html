@@ -8,16 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div id="sizeContainer"></div>
+    <div id="sizeContainer">
+        <input type="range" id="sizeRange" value="32" min="1" max="128" step="1">
+        <div id="sizeValueContainer">
+            <div id="sizeValue"></div>
+        </div>
+    </div>
+
     <div id="gridContainer"></div>
+
     <div id="buttonContainer">
         <div class="button" id="changeColorBlackButton">BLACK</div>
         <div class="button" id="changeColorRainbowButton">RAINBOW</div>
         <div class="button" id="changeColorGrayscaleButton">GRAYSCALE</div>
         <div class="button" id="resetButton">RESET</div>
     </div>
-
 
     <script src="main.js"></script>
 </body>

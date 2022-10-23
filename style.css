@@ -12,10 +12,6 @@ body {
     background-color: rgb(99, 99, 99);
 }
 
-.cell {
-    border: 1px solid black;
-}
-
 #grid {
     display: grid;
     width: 500px;
@@ -27,8 +23,12 @@ body {
     background-color: black;
 }
 
-#gridContainer {
+#sizeContainer {
     margin-top: 100px;
+}
+
+#gridContainer {
+    margin-top: 20px;
 }
 
 #buttonContainer {
@@ -68,4 +68,40 @@ body {
 
 .activeButton {
     box-shadow: 0 0 7px 7px red;
+}
+
+#sizeValueContainer {
+    width: 80px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 13px;
+}
+
+#sizeContainer {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 13px;
+    padding: 0px 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: red;
+    cursor: ew-resize;
 }

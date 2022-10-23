@@ -1,6 +1,4 @@
-const GRID_DEFAULT_SIZE = 16;
-
-let gridSize = GRID_DEFAULT_SIZE;
+let gridSize = 64;
 let colorMode = "black";
 let mouseDown = false;
 
@@ -9,16 +7,30 @@ rainbowButton = document.getElementById("changeColorRainbowButton");
 grayscaleButton = document.getElementById("changeColorGrayscaleButton");
 resetButton = document.getElementById("resetButton");
 gridContainer = document.getElementById("gridContainer");
+sizeRange = document.getElementById("sizeRange");
+sizeValue = document.getElementById("sizeValue");
 
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 document.getElementById("resetButton").onclick = resetGrid;
+sizeRange.onchange = changeSize;
 
 blackButton.addEventListener("click", changeColorMode);
 rainbowButton.addEventListener("click", changeColorMode);
 grayscaleButton.addEventListener("click", changeColorMode);
 
+
 generateGrid();
+
+
+function updateSizeValue() {
+    sizeValue.textContent = `${gridSize} x ${gridSize}`;
+}
+
+function changeSize(){
+    gridSize = sizeRange.value;
+    resetGrid();
+}
 
 function changeActiveButton(e){
     blackButton.classList.remove("activeButton");
@@ -45,6 +57,8 @@ function generateGrid(){
         newCell.addEventListener("mouseover", changeColor);
         grid.appendChild(newCell);
     }
+
+    updateSizeValue();
 }
 
 function changeColor(e){
