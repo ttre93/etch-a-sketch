@@ -4,9 +4,6 @@ let gridSize = GRID_DEFAULT_SIZE;
 let colorMode = "black";
 let mouseDown = false;
 
-//known issues: 
-//sometimes incorrect activation of "mouseDown" and painting
-
 blackButton = document.getElementById("changeColorBlackButton");
 rainbowButton = document.getElementById("changeColorRainbowButton");
 grayscaleButton = document.getElementById("changeColorGrayscaleButton");
@@ -22,13 +19,6 @@ rainbowButton.addEventListener("click", changeColorMode);
 grayscaleButton.addEventListener("click", changeColorMode);
 
 generateGrid();
-
-function changeColorMode(e){
-    if (e.target.id === "changeColorBlackButton"){colorMode = "black"}
-    else if (e.target.id === "changeColorRainbowButton"){colorMode = "rainbow"}
-    else if (e.target.id === "changeColorGrayscaleButton"){colorMode = "grayscale"}
-    changeActiveButton(e);
-}
 
 function changeActiveButton(e){
     blackButton.classList.remove("activeButton");
@@ -85,6 +75,13 @@ function changeToGrayscale(e){
         let shade = parseInt(currentGrayLevel * 40);
         e.target.style.backgroundColor = `rgb(${shade}, ${shade}, ${shade})`;
     }
+}
+
+function changeColorMode(e){
+    if (e.target.id === "changeColorBlackButton"){colorMode = "black"}
+    else if (e.target.id === "changeColorRainbowButton"){colorMode = "rainbow"}
+    else if (e.target.id === "changeColorGrayscaleButton"){colorMode = "grayscale"}
+    changeActiveButton(e);
 }
 
 function removeGrid(){
